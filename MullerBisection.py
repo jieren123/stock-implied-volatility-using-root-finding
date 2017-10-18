@@ -17,8 +17,6 @@ class ImpliedVolatilityModel_MullerBisection(object):
         self.r = r
         self.T = T
         self.option_type = option_type
-        #self.market_opt_prices = market_opt_prices
-        #self.get_implied_volatilities = []
 
     def bsmValue(self, sigma):
         d1 = (log(self.S / self.K) + (self.r + 0.5 * sigma ** 2) * self.T) / (sigma * sqrt(self.T))
