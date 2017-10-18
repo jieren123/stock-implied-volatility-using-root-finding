@@ -17,9 +17,7 @@ class ImpliedVolatility_Halley(object):
         self.r = r
         self.T = T
         self.option_type = option_type
-
-        #self.get_implied_volatilities = []
-
+        
     def bsmValue(self,sigma):
         d1 = (log(self.S / self.K) + (self.r + 0.5 * sigma ** 2) * self.T) / (sigma * sqrt(self.T))
         d2 = d1 - sigma * sqrt(self.T)
