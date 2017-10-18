@@ -18,8 +18,7 @@ class ImpliedVolatilityModel_Bisection(object):
         self.T = T
         self.option_type = option_type
         self.market_opt_prices = market_opt_prices
-        #self.get_implied_volatilities = []
-
+        
     def bsmValue(self, sigma):
         d1 = (log(self.S / self.K) + (self.r + 0.5 * sigma ** 2) * self.T) / (sigma * sqrt(self.T))
         d2 = d1 - sigma * sqrt(self.T)
@@ -33,8 +32,6 @@ class ImpliedVolatilityModel_Bisection(object):
         else:
             raise TypeError('the option_type argument must be either "call" or "put"')
 
-
-    
     def get_implied_volatilities(self):
         f = lambda sigma: self.bsmValue(sigma) 
         impv = scipy.optimize.bisect(f, 0.01, 1.40, xtol = 1e-12)[0]
