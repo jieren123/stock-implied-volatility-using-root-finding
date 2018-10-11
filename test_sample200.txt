@@ -39,6 +39,35 @@
 1096
 5233
 4553
+
+from datetime import datetime
+from datetime import timedelta 
+def time_cal(string):
+	hour_list = [3,6,7,3,6,2,3,2,2,2,0.5,0.5,3]
+	CRM_IRC_list = [
+					'OFF_CRM_NEW_100K_AUTO_CRM',
+					'OFF_CRM_NEW_100K_AUTO',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADV_QZ_NOBND',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADV_QZ_BND',
+					'OFF_IRC_RPTP_VOL_PV_100K_BBG_QZ',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADV_YRDS',
+					'OFF_IRC_RPTP_VOL_PV_100K_BBG_YRDS',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADV_QZ_CRM',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADVSINK_QZ',
+					'OFF_IRC_RPTP_VOL_PV_100K_BBGSINK_YRDS',
+					'OFF_IRC_RPTP_VOL_PV_100K_DSTS_YRDS',
+					'OFF_IRC_RPTP_VOL_PV_100K_MISTY',
+					'OFF_IRC_RPTP_VOL_PV_100K_ADV_QZ_IO']
+	
+	datetime_object = datetime.strptime(string, '%m %d %H %M')
+	for i in range(13):
+		print CRM_IRC_list[i] +': ' + repr(datetime_object.timetuple()[1:5][::-1])
+		datetime_object = datetime_object + timedelta(hours = hour_list[i])
+
+
+string = '10 02 16 10'
+# input 10021610 10 = oct 02 = day 16 =hour 10 =min
+print time_cal(string)
 3298
 5338
 5178
